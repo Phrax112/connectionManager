@@ -1,6 +1,9 @@
 //*** DESCRIPTION
 /
 IPC Handler library for q programming language 
+
+Phrax112@github
+g.moynihan2@gmail.com
 \
 
 //*** GLOBAL VARS
