@@ -79,6 +79,13 @@ g.moynihan2@gmail.com
         ]
     }
 
+.conn.dropConnection:{[h]
+    info:first 0!select from .conn.HANDLES where handle=h;
+    .log.info("Connection dropped for handle";info);
+    @[hclose;h;0b];
+    update active:0b,handle:0Ni from `.conn.HANDLES where handle=h;
+    }
+
 // Execute an asynchronous query without a timeout
 .conn.async:.conn.execute[;;0;0b];
 
