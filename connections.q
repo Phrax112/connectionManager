@@ -25,8 +25,8 @@ g.moynihan2@gmail.com
 .conn.hopen:{[handle;tmout]
     .log.info("Initialising connection for:";handle);
     $[tmout>0;
-        @[hopen;(handle;tmout);{'FailOnConnectTimeout}];
-        @[hopen;handle;{'FailOnConnect}]
+        @[hopen;(handle;tmout);{.log.error("Fail on connect";x);0Ni}];
+        @[hopen;handle;{.log.error("Fail on connect";x);0Ni}]
         ]
     }
 
