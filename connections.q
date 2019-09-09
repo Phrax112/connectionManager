@@ -75,7 +75,7 @@ g.moynihan2@gmail.com
 .conn.findService:{[svc]
     $[3=count c:.conn.chkSvcName[svc];
         first select from .conn.REGISTER where cluster=c[0],service=c[1],app=c[2];
-        first select from .conn.REGISTER where where cluster=c[0],service=c[1],app=c[2],node=c[3];
+        first select from .conn.REGISTER where cluster=c[0],service=c[1],app=c[2],node=c[3]
         ]
     }
 
