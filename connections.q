@@ -7,8 +7,9 @@ g.moynihan2@gmail.com
 \
 
 //*** GLOBAL VARS
+.conn.DIR:"/" sv -1_"/" vs value[{}]6;
 .conn.HANDLES:([service:`symbol$()]handle:`int$();initTime:`timestamp$();active:`boolean$());
-.conn.REGISTER:("SSSISIS";enlist ",")0:`:/Users/gmoy/Documents/GitHub/connectionManager/connections.csv;
+.conn.REGISTER:("SSSISIS";enlist ",")0: hsym `$.conn.DIR,"/connections.csv";
 
 // *** FUNCTIONS
 
