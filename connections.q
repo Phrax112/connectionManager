@@ -7,7 +7,7 @@ g.moynihan2@gmail.com
 \
 
 //*** GLOBAL VARS
-.conn.DIR:"/" sv -1_"/" vs value[{}]6;
+@[value;`.conn.DIR;{`.conn.DIR set "/" sv -1_"/" vs value[{}]6}];
 .conn.HANDLES:([service:`symbol$()]handle:`int$();initTime:`timestamp$();active:`boolean$());
 .conn.REGISTER:("SSSISIS";enlist ",")0: hsym `$.conn.DIR,"/connections.csv";
 
