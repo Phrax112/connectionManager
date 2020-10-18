@@ -9,7 +9,7 @@ g.moynihan2@gmail.com
 //*** GLOBAL VARS
 @[value;`.conn.DIR;{`.conn.DIR set "/" sv -1_"/" vs value[{}]6}];
 .conn.HANDLES:([service:`symbol$()]handle:`int$();initTime:`timestamp$();active:`boolean$());
-.conn.REGISTER:("SSSISIS";enlist ",")0: hsym `$.conn.DIR,"/connections.csv";
+.conn.REGISTER:("SSSISISS";enlist ",")0: hsym `$.conn.DIR,"/connections.csv";
 
 // *** FUNCTIONS
 
@@ -18,8 +18,16 @@ g.moynihan2@gmail.com
 // callback specifies if a return is expected i.e sync or async
 .conn.execute:{[svc;query;tmout;callback]
     .log.info("Executing";query;"on remote service";svc);
-    h:.conn.getHandle[callback;.conn.findService[svc];tmout;query];
+    svcDetails:.conn.findService[svc];
+    h:.conn.getHandle[callback;svcDetails;tmout;query];
+    if[not `~svcDetails`query_type;query:.conn.format[svcDetails`query_type] query];
     @[h;query;{[h;query;err].log.info("Query failed:";`handle`query`error!(h;query;err))}[h;query;]]
+    }
+
+.conn.format:()!();
+.conn.format[`sql]:{[query]
+    if[not 10h=abs type query;'"SQL backend must be queried with a string!"];
+    "s) ",query
     }
 
 // Wrapper for a connnection open
